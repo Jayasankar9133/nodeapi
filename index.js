@@ -46,4 +46,6 @@ app.post('/person/', async (req, res) => {
     const query = `INSERT INTO person
     values('${name}',${age},'${gender}','${place}');`;
     const arrayQuery = await db.run(query);
+    const id = arrayQuery.lastId;
+    res.send({ id: id });
 });
